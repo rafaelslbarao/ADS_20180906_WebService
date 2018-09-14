@@ -19,7 +19,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import br.com.datamob.webservice.webservices.content.Data;
-import br.com.datamob.webservice.webservices.content.GetUniversidades;
+import br.com.datamob.webservice.webservices.content.UniversidadesSquidexInfo;
 import br.com.datamob.webservice.webservices.content.Token;
 
 public class WebServiceControle
@@ -37,7 +37,8 @@ public class WebServiceControle
         return requestQueue;
     }
 
-    public void carregaListaUniversidades(final Context context, final CarregaListaUniversidadesListener carregaListaUniversidadesListener)
+    public void carregaListaUniversidades(final Context context
+            , final CarregaListaUniversidadesListener carregaListaUniversidadesListener)
     {
         if (token == null)
         {
@@ -68,7 +69,7 @@ public class WebServiceControle
                         public void onResponse(JSONObject response)
                         {
                             if (carregaListaUniversidadesListener != null)
-                                carregaListaUniversidadesListener.onResultOk(new Gson().fromJson(response.toString(), GetUniversidades.class));
+                                carregaListaUniversidadesListener.onResultOk(new Gson().fromJson(response.toString(), UniversidadesSquidexInfo.class));
                         }
                     },
                     new Response.ErrorListener()
@@ -123,7 +124,8 @@ public class WebServiceControle
         }
         else
         {
-            JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST,
+            JsonObjectRequest jsonObjectRequest
+                    = new JsonObjectRequest(Request.Method.POST,
                     "https://cloud.squidex.io/api/content/barao/universidades?publish=true",
                     new JSONObject(new Gson().toJson(data)),
                     new Response.Listener<JSONObject>()
@@ -335,7 +337,7 @@ public class WebServiceControle
 
     public interface CarregaListaUniversidadesListener
     {
-        public abstract void onResultOk(GetUniversidades universidades);
+        public abstract void onResultOk(UniversidadesSquidexInfo universidades);
 
         public abstract void onErro();
     }

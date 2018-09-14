@@ -15,7 +15,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import br.com.datamob.webservice.webservices.WebServiceControle;
-import br.com.datamob.webservice.webservices.content.GetUniversidades;
+import br.com.datamob.webservice.webservices.content.UniversidadesSquidexInfo;
 import br.com.datamob.webservice.webservices.content.Item;
 
 public class ListagemActivity extends AppCompatActivity
@@ -24,7 +24,7 @@ public class ListagemActivity extends AppCompatActivity
     private ListView lvUniversidades;
     private SwipeRefreshLayout srUniversidades;
     private FloatingActionButton fabConfirmar;
-    private GetUniversidades listUniversidades;
+    private UniversidadesSquidexInfo listUniversidades;
 
 
     @Override
@@ -136,7 +136,7 @@ public class ListagemActivity extends AppCompatActivity
         new WebServiceControle().carregaListaUniversidades(this, new WebServiceControle.CarregaListaUniversidadesListener()
         {
             @Override
-            public void onResultOk(GetUniversidades universidades)
+            public void onResultOk(UniversidadesSquidexInfo universidades)
             {
                 listUniversidades = universidades;
                 ((ArrayAdapter) lvUniversidades.getAdapter()).notifyDataSetChanged();

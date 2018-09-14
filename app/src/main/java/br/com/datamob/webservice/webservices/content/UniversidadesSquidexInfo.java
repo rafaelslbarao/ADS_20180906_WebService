@@ -2,7 +2,7 @@ package br.com.datamob.webservice.webservices.content;
 
 import java.io.Serializable;
 
-public class GetUniversidades implements Serializable
+public class UniversidadesSquidexInfo implements Serializable
 {
     private Long total;
     private Item[] items;
